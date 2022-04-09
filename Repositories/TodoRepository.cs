@@ -56,7 +56,7 @@ public class TodoRepository : BaseRepository, ITodoRepository
     }
     public async Task<List<Todo>> GetList()
     {
-        var query = $@"SELECT * FROM ""{TableNames.todo}""";
+        var query = $@"SELECT * FROM ""{TableNames.todo}"" ORDER BY id";
         List<Todo> res;
         using (var con = NewConnection)
             res = (await con.QueryAsync<Todo>(query)).AsList();
@@ -68,7 +68,7 @@ public class TodoRepository : BaseRepository, ITodoRepository
         var query = $@"SELECT * FROM ""{TableNames.todo}"" WHERE user_id = @UserId";
 
         using (var con = NewConnection)
-         return (await con.QueryAsync<Todo>(query, new { UserId })).ToList();
+            return (await con.QueryAsync<Todo>(query, new { UserId })).ToList();
 
     }
 
