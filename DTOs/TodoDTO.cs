@@ -9,11 +9,11 @@ public record TodoDTO
     public long TodoId { get; set; }
 
     [JsonPropertyName("title")]
-    public String Title { get; set; }
+    public string Title { get; set; }
 
     [JsonPropertyName("description")]
 
-    public String Description { get; set; }
+    public string Description { get; set; }
 
     [JsonPropertyName("user_id")]
 
@@ -23,21 +23,19 @@ public record TodoDTO
 public record TodoCreateDTO
 {
     [JsonPropertyName("title")]
-    public String Title { get; set; }
+    public string Title { get; set; }
 
     [JsonPropertyName("description")]
-    public String Description { get; set; }
+    public string Description { get; set; }
 
-    [JsonPropertyName("user_id")]
-    public long UserId { get; set; }
 
 }
 
 public record TodoUpdateDTO
 {
     [JsonPropertyName("title")]
-    public String Title { get; set; }
+    public string Title { get; set; }
 
     [JsonPropertyName("description")]
-    public String Description { get; set; }
+    public string Description { get; set; }
 }

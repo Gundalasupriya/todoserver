@@ -21,8 +21,8 @@ public class TodoRepository : BaseRepository, ITodoRepository
     public async Task<Todo> Create(Todo item)
     {
         var query = $@"INSERT INTO ""{TableNames.todo}""
-        (todo_id,user_id,description,title)
-        VALUES (@TodoId,  @UserId, @Description, @Title) RETURNING *";
+        (user_id,description,title)
+        VALUES (@UserId, @Description, @Title) RETURNING *";
 
         using (var con = NewConnection)
         {
@@ -56,10 +56,10 @@ public class TodoRepository : BaseRepository, ITodoRepository
     }
     public async Task<List<Todo>> GetList()
     {
-        var query = $@"SELECT * FROM ""{TableNames.todo}"" ORDER BY id";
+        var query = $@"SELECT * FROM ""{TableNames.todo}"" ";
         List<Todo> res;
         using (var con = NewConnection)
-            res = (await con.QueryAsync<Todo>(query)).AsList();
+        res = (await con.QueryAsync<Todo>(query)).AsList();
         return res;
     }
 

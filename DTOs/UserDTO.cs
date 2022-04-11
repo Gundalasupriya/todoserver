@@ -10,21 +10,21 @@ public record UserDTO
     public long UserId { get; set; }
 
     [JsonPropertyName("name")]
-    public String Name { get; set; }
+    public string Name { get; set; }
 
     [JsonPropertyName("password")]
 
-    public String Password { get; set; }
+    public string Password { get; set; }
 
 }
 
 public record UserCreateDTO
 {
     [JsonPropertyName("name")]
-    public String Name { get; set; }
+    public string Name { get; set; }
 
     [JsonPropertyName("password")]
-    public String Password { get; set; }
+    public string Password { get; set; }
 
 }
 

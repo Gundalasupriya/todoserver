@@ -28,8 +28,8 @@ public class TodoController : ControllerBase
         // var res = await _todo.GetList();
         // return Ok(res.Select(x => x.asDto));
         var TodoList = await _todo.GetList();
-        var dtoList = TodoList.Select(x => x);
-        return Ok(dtoList);
+        // var dtoList = TodoList.Select(x => x);
+        return Ok(TodoList);
     }
     [HttpGet("GetUserTodos")]
     [Authorize]
@@ -62,9 +62,10 @@ public class TodoController : ControllerBase
     public async Task<ActionResult<TodoDTO>> CreateTodo([FromBody] TodoCreateDTO Data)
     {
         var id = GetCurrentuserId();
+        var userId = int.Parse(id);
         var toCreateTodo = new Todo
         {
-            UserId = Data.UserId,
+            UserId = userId,
             Title = Data.Title,
             Description = Data.Description,
 
@@ -87,6 +88,7 @@ public class TodoController : ControllerBase
 
         var toUpdateTodolist = existing with
         {
+            Title = Data.Title?.Trim() ?? existing.Title,
             Description = Data.Description?.Trim() ?? existing.Description,
         };
 
